@@ -35,7 +35,6 @@ class Result {
                 int j = i;
                 tree[i] = -1;
                 mStack.push(i);
-                int count = 10;
                 System.out.println("A: " + (connection.get(j)-1));
                 while(tree[connection.get(j)-1] == 0) {
                 	tree[connection.get(j)-1] = -1;
