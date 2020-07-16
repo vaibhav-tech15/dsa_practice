@@ -33,7 +33,7 @@ public class BFS {
 	}
 	
 	public static void main(String[] args) {
-		Graph graph = GraphFactory.createGraph("Undirected");
+		Graph graph = GraphFactory.createGraph("Undirected", false);
 		runAlgorithm(graph);
 	}
 }

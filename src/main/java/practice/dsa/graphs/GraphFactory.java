@@ -9,7 +9,7 @@ public class GraphFactory {
 	private static Map<Integer, Integer[]> graphContent = new HashMap<>();
 	private static Map<Integer, String> graphLabels = new HashMap<>();
 
-	private static void initUndirectedGraph() {
+	private static void initUndirectedGraph(boolean weighted) {
 		graphLabels.put(0, "A");
 		graphLabels.put(1, "B");
 		graphLabels.put(2, "C");
@@ -28,7 +28,7 @@ public class GraphFactory {
 		graphContent.put(7, new Integer[] { 1, 4 });
 	}
 
-	private static void initDirectedGraph() {
+	private static void initDirectedGraph(boolean weighted) {
 		graphLabels.put(0, "2");
 		graphLabels.put(1, "3");
 		graphLabels.put(2, "5");
@@ -47,13 +47,13 @@ public class GraphFactory {
 		graphContent.put(7, new Integer[] { 0, 5, 6 });
 	}
 
-	public static Graph createGraph(String graphType) {
+	public static Graph createGraph(String graphType, boolean weighted) {
 		switch (graphType.toLowerCase()) {
 		case "directed":
-			initDirectedGraph();
+			initDirectedGraph(weighted);
 			break;
 		case "undirected":
-			initUndirectedGraph();
+			initUndirectedGraph(weighted);
 			break;
 		}
 
