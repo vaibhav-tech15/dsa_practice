@@ -49,13 +49,13 @@ public class TopologicalSort {
 		});
 
 		// StringBuilder sb = new StringBuilder();
-		int resultCounter = 0;
+		//int resultCounter = 0;
 
 		while (!mQue.isEmpty()) {
 			GraphNode currentNode = graph.getVerticesList().get(mQue.poll());
 			// sb.append(currentNode.getNodeLabel() + " -> ");
 			sortedNodeIds.add(currentNode.getNodeId());
-			resultCounter++;
+			//resultCounter++;
 
 			currentNode = currentNode.getNext();
 			while (currentNode != null) {
@@ -68,7 +68,7 @@ public class TopologicalSort {
 			}
 		}
 
-		System.out.println("Result Counter: " + resultCounter);
+		//System.out.println("Result Counter: " + resultCounter);
 		// System.out.println("Sorted Result: " + sb.toString().substring(0,
 		// sb.lastIndexOf(" -> ")));
 		return sortedNodeIds;
