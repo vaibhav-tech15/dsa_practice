@@ -38,7 +38,29 @@ public class GraphFactory {
 
 		if (weighted) {
 			if (negativeEdges) {
+				graphLabels.put(0, "A");
+				graphLabels.put(1, "B");
+				graphLabels.put(2, "C");
+				graphLabels.put(3, "D");
+				graphLabels.put(4, "E");
+				graphLabels.put(5, "F");
+				graphContent.put(0, new Integer[] { 1, 2, 3 });
+				graphContent.put(1, new Integer[] { 4 });
+				graphContent.put(2, new Integer[] { 1, 4 });
+				graphContent.put(3, new Integer[] { 2, 5 });
+				graphContent.put(4, new Integer[] { 5 });
+				graphContent.put(5, null);
 
+				graphWeights = new int[graphLabels.size()][graphLabels.size()];
+				graphWeights[0][1] = 6;
+				graphWeights[0][2] = 4;
+				graphWeights[0][3] = 5;
+				graphWeights[1][4] = -1;
+				graphWeights[2][1] = -2;
+				graphWeights[2][4] = 3;
+				graphWeights[3][2] = -2;
+				graphWeights[3][5] = -1;
+				graphWeights[4][5] = 3;
 			} else {
 				graphLabels.put(0, "A");
 				graphLabels.put(1, "B");
