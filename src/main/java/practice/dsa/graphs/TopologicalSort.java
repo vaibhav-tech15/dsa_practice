@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class TopologicalSort {
 	public static void main(String[] args) {
-		Graph graph = GraphFactory.createGraph("directed", false);
+		Graph graph = GraphFactory.createGraph("directed", false, false);
 		runAlgorithm(graph);
 	}
 

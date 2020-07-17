@@ -32,7 +32,7 @@ public class DFS {
 	}
 	
 	public static void main(String[] args) {
-		Graph graph = GraphFactory.createGraph("undirected", false);
+		Graph graph = GraphFactory.createGraph("undirected", false, false);
 		runAlgorithm(graph);
 	}
 }

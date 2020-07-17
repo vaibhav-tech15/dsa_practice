@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class TopologicalSortDFS {
 	public static void main(String[] args) {
-		Graph graph = GraphFactory.createGraph("directed", false);
+		Graph graph = GraphFactory.createGraph("directed", false, false);
 		runAlgorithm(graph);
 	}
 
