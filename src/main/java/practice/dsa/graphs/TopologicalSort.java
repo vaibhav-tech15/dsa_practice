@@ -1,14 +1,18 @@
 package practice.dsa.graphs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 public class TopologicalSort {
 	public static void main(String[] args) {
 		Graph graph = GraphFactory.createGraph("directed", false, false);
-		runAlgorithm(graph);
+		System.out.println(runTopologicalSort(graph).stream()
+				.map(nodeId -> graph.getVerticesList().get(nodeId).getNodeLabel()).collect(Collectors.joining(" -> ")));
 	}
 
 	private static Map<Integer, Integer> getInDegree(Graph graph) {
@@ -33,8 +37,9 @@ public class TopologicalSort {
 		return inDegree;
 	}
 
-	private static void runAlgorithm(Graph graph) {
+	public static List<Integer> runTopologicalSort(Graph graph) {
 		Map<Integer, Integer> inDegree = getInDegree(graph);
+		List<Integer> sortedNodeIds = new ArrayList<>();
 
 		Queue<Integer> mQue = new LinkedList<>();
 		inDegree.entrySet().forEach(entry -> {
@@ -43,15 +48,15 @@ public class TopologicalSort {
 			}
 		});
 
-		StringBuilder sb = new StringBuilder();
+		// StringBuilder sb = new StringBuilder();
 		int resultCounter = 0;
 
 		while (!mQue.isEmpty()) {
 			GraphNode currentNode = graph.getVerticesList().get(mQue.poll());
-			sb.append(currentNode.getNodeLabel() + " -> ");
+			// sb.append(currentNode.getNodeLabel() + " -> ");
+			sortedNodeIds.add(currentNode.getNodeId());
 			resultCounter++;
 
-			
 			currentNode = currentNode.getNext();
 			while (currentNode != null) {
 				int ind = inDegree.get(currentNode.getNodeId());
@@ -64,6 +69,8 @@ public class TopologicalSort {
 		}
 
 		System.out.println("Result Counter: " + resultCounter);
-		System.out.println("Sorted Result: " + sb.toString().substring(0, sb.lastIndexOf(" -> ")));
+		// System.out.println("Sorted Result: " + sb.toString().substring(0,
+		// sb.lastIndexOf(" -> ")));
+		return sortedNodeIds;
 	}
 }
