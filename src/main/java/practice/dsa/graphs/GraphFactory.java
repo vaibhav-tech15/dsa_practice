@@ -14,22 +14,63 @@ public class GraphFactory {
 		graphLabels.clear();
 		graphContent.clear();
 
-		graphLabels.put(0, "A");
-		graphLabels.put(1, "B");
-		graphLabels.put(2, "C");
-		graphLabels.put(3, "D");
-		graphLabels.put(4, "E");
-		graphLabels.put(5, "F");
-		graphLabels.put(6, "G");
-		graphLabels.put(7, "H");
-		graphContent.put(0, new Integer[] { 1 });
-		graphContent.put(1, new Integer[] { 0, 7, 2 });
-		graphContent.put(2, new Integer[] { 1, 3, 4 });
-		graphContent.put(3, new Integer[] { 2 });
-		graphContent.put(4, new Integer[] { 2, 5, 6, 7 });
-		graphContent.put(5, new Integer[] { 4 });
-		graphContent.put(6, new Integer[] { 4 });
-		graphContent.put(7, new Integer[] { 1, 4 });
+		if (weighted) {
+			graphLabels.put(0, "A");
+			graphLabels.put(1, "B");
+			graphLabels.put(2, "C");
+			graphLabels.put(3, "D");
+			graphLabels.put(4, "E");
+			graphLabels.put(5, "F");
+			graphLabels.put(6, "G");
+			graphContent.put(0, new Integer[] { 2, 3 });
+			graphContent.put(1, new Integer[] { 2, 4 });
+			graphContent.put(2, new Integer[] { 0, 1, 3, 4 });
+			graphContent.put(3, new Integer[] { 0, 2, 4, 5 });
+			graphContent.put(4, new Integer[] { 1, 2, 3, 5, 6 });
+			graphContent.put(5, new Integer[] { 3, 4, 6 });
+			graphContent.put(6, new Integer[] { 4, 5 });
+			
+			graphWeights = new int[graphLabels.size()][graphLabels.size()];
+			graphWeights[0][2] = 7;
+			graphWeights[0][3] = 5;
+			graphWeights[1][2] = 8;
+			graphWeights[1][4] = 5;
+			graphWeights[2][0] = 7;
+			graphWeights[2][1] = 8;
+			graphWeights[2][3] = 9;
+			graphWeights[2][4] = 7;
+			graphWeights[3][0] = 5;
+			graphWeights[3][2] = 9;
+			graphWeights[3][4] = 15;
+			graphWeights[3][5] = 6;
+			graphWeights[4][1] = 5;
+			graphWeights[4][2] = 7;
+			graphWeights[4][3] = 15;
+			graphWeights[4][5] = 8;
+			graphWeights[4][6] = 9;
+			graphWeights[5][3] = 6;
+			graphWeights[5][4] = 8;
+			graphWeights[5][6] = 11;
+			graphWeights[6][4] = 9;
+			graphWeights[6][5] = 11;
+		} else {
+			graphLabels.put(0, "A");
+			graphLabels.put(1, "B");
+			graphLabels.put(2, "C");
+			graphLabels.put(3, "D");
+			graphLabels.put(4, "E");
+			graphLabels.put(5, "F");
+			graphLabels.put(6, "G");
+			graphLabels.put(7, "H");
+			graphContent.put(0, new Integer[] { 1 });
+			graphContent.put(1, new Integer[] { 0, 7, 2 });
+			graphContent.put(2, new Integer[] { 1, 3, 4 });
+			graphContent.put(3, new Integer[] { 2 });
+			graphContent.put(4, new Integer[] { 2, 5, 6, 7 });
+			graphContent.put(5, new Integer[] { 4 });
+			graphContent.put(6, new Integer[] { 4 });
+			graphContent.put(7, new Integer[] { 1, 4 });
+		}
 	}
 
 	private static void initDirectedGraph(boolean weighted, boolean negativeEdges) {
